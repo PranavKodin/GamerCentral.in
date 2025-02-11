@@ -1,0 +1,88 @@
+{
+  "products": [
+      {
+          "id": 1,
+          "title": "Ultimate Gaming Keyboard",
+          "reviews": 1500,
+          "price": 99.99,
+          "discount": "10% off with code GAMER10",
+          "features": [
+              "RGB Backlighting with Customizable Colors",
+              "Anti-Ghosting Technology",
+              "Ergonomic Design for Long Sessions",
+              "Durable Key Switches for Precision",
+              "Compatible with Windows & macOS"
+          ],
+          "main_image": "images/keyboard2.jpg",
+          "thumbnail_images": [
+              "images/keyboard.jpg",
+              "images/keyboard2.jpg",
+              "images/keyboard3.jpg"
+          ],
+          "affiliate_link": "https://amzn.to/4hebyLv",
+          "youtube_review": "https://www.youtube.com/watch?v=EXAMPLE1",
+          "prices": [
+              { "website": "Amazon", "price": 99 },
+              { "website": "Flipkart", "price": 105 },
+              { "website": "Best Buy", "price": 110 },
+              { "website": "Newegg", "price": 95 }
+          ]
+      },
+      {
+          "id": 2,
+          "title": "Razer Basilisk V3 Wired Gaming Mouse RZ01-04000100-R3M1",
+          "reviews": 1200,
+          "price": 49.99,
+          "discount": "5% off with code GAMER5",
+          "features": [
+              "High Precision Sensor",
+              "Customizable DPI Settings",
+              "RGB Lighting",
+              "Ergonomic Design for Comfort",
+              "Durable and Responsive Buttons"
+          ],
+          "main_image": "https://m.media-amazon.com/images/I/71tuAoPh-LL._SY450_.jpg",
+          "thumbnail_images": [
+              "https://m.media-amazon.com/images/I/718Q2sbZalL._SY450_.jpg",
+              "https://m.media-amazon.com/images/I/91pakQZTcjL._SY450_.jpg",
+              "https://m.media-amazon.com/images/I/8186iKHvmRL._SY450_.jpg"
+          ],
+          "affiliate_link": "https://amzn.to/3WLIsuQ",
+          "youtube_review": "https://www.youtube.com/watch?v=HUVcEYYZ5Ek",
+          "prices": [
+              { "website": "Amazon", "price": 45 },
+              { "website": "Flipkart", "price": 50 },
+              { "website": "Best Buy", "price": 55 },
+              { "website": "Newegg", "price": 47 }
+          ]
+      },
+      {
+          "id": 3,
+          "title": "Wireless Gaming Headset",
+          "reviews": 950,
+          "price": 79.99,
+          "discount": "15% off with code AUDIO15",
+          "features": [
+              "Noise-Canceling Microphone",
+              "Comfortable Over-Ear Cushions",
+              "Wireless with 20+ hours battery life",
+              "Surround Sound Technology",
+              "Compatible with all gaming platforms"
+          ],
+          "main_image": "https://m.media-amazon.com/images/I/51vQ8JXSyWL._SY450_.jpg",
+          "thumbnail_images": [
+              "https://m.media-amazon.com/images/I/51vQ8JXSyWL._SY450_.jpg",
+              "https://m.media-amazon.com/images/I/71P+M6jOX7L._SY450_.jpg",
+              "https://m.media-amazon.com/images/I/71P+M6jOX7L._SY450_.jpg"
+          ],
+          "affiliate_link": "https://amzn.to/4jI23FU",
+          "youtube_review": "https://www.youtube.com/watch?v=EXAMPLE3",
+          "prices": [
+              { "website": "Amazon", "price": 85 },
+              { "website": "Flipkart", "price": 90 },
+              { "website": "Best Buy", "price": 95 },
+              { "website": "Newegg", "price": 80 }
+          ]
+      }
+  ]
+}

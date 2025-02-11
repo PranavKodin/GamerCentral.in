@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamerCentral - The Ultimate Gaming Gear Comparison Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Bebas+Neue&family=Press+Start+2P&family=Anton&family=Russo+One&family=Audiowide&family=Exo+2:wght@400;600&family=Rajdhani&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="slider">
+        <!-- Navigation Arrows -->
+        <div class="arrow arrow-left">&#10094;</div>
+        <div class="arrow arrow-right">&#10095;</div>
+
+        <!-- Slides (Dynamic) -->
+        <div class="slides-container">
+            <div class="slide active show1" style="background-image: url(images/image1.jpg);">
+                <div class="slide-content" class="bg-blue-900">
+                    <h1 class="slide_title">Title 1</h1>
+                    <p class="slide_description">Description for Image 1.</p>
+                </div>
+            </div>
+
+            <div class="slide show2" style="background-image: url('images/image2.jpg');">
+                <div class="slide-content">
+                    <h1 class="slide_title">Title 2</h2>
+                    <p class="slide_description">Description for Image 2.</p>
+                </div>
+            </div>
+
+            <div class="slide show3" style="background-image: url('images/image3.jpg');">
+                <div class="slide-content">
+                    <h1 class="slide_title">Title 3</h2>
+                    <p class="slide_description">Description for Image 3.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dots for Navigation -->
+        <div class="dots"></div>
+    </div>
+
+    <ul class="nav-links">
+        <div class="logo">
+            <h2>GamerCentral</h2> <!-- Visible on larger screens -->
+            <img class="mobile-logo" src="logo.png" alt="GamerCentral Logo" /> <!-- Logo image for mobile -->
+        </div>
+        <li><a href="news/news.html">Gaming News</a></li>
+        <li class="center"><a href="#comparison">Portfolio</a></li>
+        <li class="upward"><a href="#">Services</a></li>
+        <li class="forward"><a href="#">About</a></li>
+        
+        <!-- Hamburger Menu (Only visible on small screens) -->
+        <li class="hamburger">
+            <a href="javascript:void(0);" onclick="toggleSidebar()">&#9776;</a> <!-- Hamburger icon -->
+        </li>
+    </ul>
+    
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+        <a href="#">Gaming News</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
+    </div>
+    
+    
+
+    <main>
+        <section class="hero">
+            <h2>Discover the Best Gaming Gear</h2>
+            <p>Compare, shop, and level up your gaming setup.</p>
+            <a href="#comparison" class="cta-button">Get Started</a>
+        </section>
+
+        <section id="comparison" class="comparison">
+            <h2>The top gaming necessity</h2>
+            <div class="comparison-cards">
+                <div class="card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Controllers</h3>
+                    <p>Compare top gaming controllers.</p>
+                    <a href="products/index.html?id=1" class="cta-button">Compare Now</a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-headphones-alt"></i>
+                    <h3>Headsets</h3>
+                    <p>Find the best gaming headsets.</p>
+                    <a href="#" class="cta-button">Compare Now</a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-keyboard"></i>
+                    <h3>Keyboards</h3>
+                    <p>Choose your ideal keyboard.</p>
+                    <a href="products/index.html?id=3" class="cta-button">Compare Now</a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-mouse"></i>
+                    <h3>Mice</h3>
+                    <p>Find precision with top gaming mice.</p>
+                    <a href="products/index.html?id=2" class="cta-button">Compare Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Why GamerCentral?</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Expert Reviews</h3>
+                    <p>In-depth reviews from gamers, for gamers.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tags"></i>
+                    <h3>Best Deals</h3>
+                    <p>Exclusive discounts and offers on top gear.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>User Reviews</h3>
+                    <p>Read real reviews from the gaming community.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="news">
+            <h2>Latest Gaming News</h2>
+            <div class="news-tile">
+                <div class="news-item">
+                    <img src="https://via.placeholder.com/400x250" alt="News 1">
+                    <h3>New Gaming Chair Models Released</h3>
+                    <p>Discover the latest in gaming comfort.</p>
+                </div>
+                <div class="news-item">
+                    <img src="https://via.placeholder.com/400x250" alt="News 2">
+                    <h3>Top 10 Keyboards of 2025</h3>
+                    <p>Find your perfect keyboard with our expert reviews.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 GamerCentral. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

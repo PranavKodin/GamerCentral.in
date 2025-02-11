@@ -1,0 +1,273 @@
+/* General Styles */
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+.header {
+    background-color: #111111b5;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    font-size: 2rem;
+    font-family: "Press Start 2P", cursive;
+    color: #ffac33;
+}
+
+.header .nav a {
+    color: #fff;
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.header .nav a:hover {
+    color: #ffac33;
+}
+
+/* Product Page Styles */
+.product-container {
+    display: flex;
+    margin: 30px;
+}
+
+.product-left {
+    position: relative;
+    right: 100px;
+    flex: 1;
+    margin-left: 020px;
+}
+
+.product-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.main-image {
+    position: relative;
+    height: auto;
+    cursor: crosshair;
+}
+
+#main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.zoom-box {
+    width: 400px; /* Size of zoomed-in view */
+    height: 400px;
+    position: absolute;
+    left: 470px; /* Position next to the main image */
+    top: 0;
+    border: 2px solid #ddd;
+    background-repeat: no-repeat;
+    display: none;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.thumbnail-images {
+    display: flex;
+    justify-content: space-around;
+}
+
+.thumb-img {
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.thumb-img:hover {
+    opacity: 0.7;
+}
+
+/* Product Info */
+.product-right {
+    position: absolute;
+    right: 100px;
+    flex: 1;
+    margin-left: 5px;
+}
+
+#titlo {
+    height: auto;
+    width: 400px;
+}
+
+.product-title h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.product-rating {
+    color: #ffac33;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 2rem;
+    color: #ffac33;
+    margin-bottom: 10px;
+}
+
+.product-discount {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.product-description{
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+}
+
+.product-description h2 {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.product-description ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.product-description li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.add-to-cart-btn, .buy-now-btn {
+    background-color: #ffac33;
+    color: #000;
+    font-size: 1.2rem;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 400px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.add-to-cart-btn:hover, .buy-now-btn:hover {
+    background-color: #e89a2d;
+}
+
+/* Reviews Section */
+.reviews-section {
+    background-color: #2a2a2a;
+    padding: 30px;
+}
+
+.reviews-section h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+}
+
+.review {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.review-text {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.review-author {
+    font-size: 1rem;
+    color: #ffac33;
+    margin-top: 10px;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #111;
+    color: #777;
+    padding: 20px;
+    text-align: center;
+}
+
+#chart_div {
+    width: 100%;
+    height: 400px;
+    background-color: transparent;  /* Transparent background for chart container */
+}
+h1 {
+    font-size: 2rem;
+    color: white;  /* Ensure the title text is white */
+}
+.google-visualization-tooltip {
+    color: black; /* Tooltip font color (optional) */
+}
+
+.youtube-review-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: #00000068;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.youtube-review-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.youtube-card {
+    background: #000000;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.watch-youtube {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #FF0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.watch-youtube:hover {
+    background: #CC0000;
+}
