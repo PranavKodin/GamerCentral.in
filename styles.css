@@ -218,10 +218,11 @@ a {
 
 .nav-links {
     position: fixed;
-    top: 20px;
-    right: 55px;
+    top: 20px; /* Keeps space from the top */
+    left: 0;
+    right: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Centers nav items */
     align-items: center;
     gap: 20px;
     background: rgba(0, 0, 0, 0.372);
@@ -229,11 +230,14 @@ a {
     padding: 15px 20px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 1400px;
     font-family: "Rajdhani", serif;
     transition: top 0.3s ease-in-out;
+    
+    width: calc(100% - 40px); /* Ensures navbar fills the screen minus margins */
+    margin: 0 auto; /* Centers the navbar horizontally */
+    max-width: 98vw; /* Prevents it from being too wide */
 }
+
 
 .nav-links li {
     list-style: none;

@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GamerCentral - The Ultimate Gaming Gear Comparison Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Bebas+Neue&family=Press+Start+2P&family=Anton&family=Russo+One&family=Audiowide&family=Exo+2:wght@400;600&family=Rajdhani&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Bebas+Neue&family=Press+Start+2P&family=Anton&family=Russo+One&family=Audiowide&family=Exo+2:wght@400;600&family=Rajdhani&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -28,14 +30,14 @@
             <div class="slide show2" style="background-image: url('images/image2.jpg');">
                 <div class="slide-content">
                     <h1 class="slide_title">Title 2</h2>
-                    <p class="slide_description">Description for Image 2.</p>
+                        <p class="slide_description">Description for Image 2.</p>
                 </div>
             </div>
 
             <div class="slide show3" style="background-image: url('images/image3.jpg');">
                 <div class="slide-content">
                     <h1 class="slide_title">Title 3</h2>
-                    <p class="slide_description">Description for Image 3.</p>
+                        <p class="slide_description">Description for Image 3.</p>
                 </div>
             </div>
         </div>
@@ -43,23 +45,24 @@
         <!-- Dots for Navigation -->
         <div class="dots"></div>
     </div>
+    <div id="navcont">
+        <ul class="nav-links">
+            <div class="logo">
+                <h2>GamerCentral</h2> <!-- Visible on larger screens -->
+                <img class="mobile-logo" src="logo.png" alt="GamerCentral Logo" /> <!-- Logo image for mobile -->
+            </div>
+            <li><a href="news/news.html">Gaming News</a></li>
+            <li class="center"><a href="#comparison">Portfolio</a></li>
+            <li class="upward"><a href="#">Services</a></li>
+            <li class="forward"><a href="#">About</a></li>
 
-    <ul class="nav-links">
-        <div class="logo">
-            <h2>GamerCentral</h2> <!-- Visible on larger screens -->
-            <img class="mobile-logo" src="logo.png" alt="GamerCentral Logo" /> <!-- Logo image for mobile -->
-        </div>
-        <li><a href="news/news.html">Gaming News</a></li>
-        <li class="center"><a href="#comparison">Portfolio</a></li>
-        <li class="upward"><a href="#">Services</a></li>
-        <li class="forward"><a href="#">About</a></li>
-        
-        <!-- Hamburger Menu (Only visible on small screens) -->
-        <li class="hamburger">
-            <a href="javascript:void(0);" onclick="toggleSidebar()">&#9776;</a> <!-- Hamburger icon -->
-        </li>
-    </ul>
-    
+            <!-- Hamburger Menu (Only visible on small screens) -->
+            <li class="hamburger">
+                <a href="javascript:void(0);" onclick="toggleSidebar()">&#9776;</a> <!-- Hamburger icon -->
+            </li>
+        </ul>
+    </div>
+
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
@@ -68,8 +71,8 @@
         <a href="#">Services</a>
         <a href="#">About</a>
     </div>
-    
-    
+
+
 
     <main>
         <section class="hero">
@@ -148,7 +151,8 @@
 
     <footer class="footer">
         <div>
-            <h3><a style="color: aqua; font-family:cursive;" target="_blank" href="https://www.heymahodaye.site/">heymahodaye.site</a> made this website with <3 </h3>
+            <h3><a style="color: aqua; font-family:cursive;" target="_blank"
+                    href="https://www.heymahodaye.site/">heymahodaye.site</a> made this website with <3 </h3>
         </div>
         <p>© 2025 GamerCentral. All Rights Reserved.</p>
     </footer>
