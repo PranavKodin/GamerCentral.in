@@ -14,7 +14,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Orbitron", sans-serif;    
+            font-family: "Orbitron", sans-serif;
         }
 
         html,
@@ -24,7 +24,7 @@
             width: 100%;
             height: 100%;
             display: table;
-            
+
             background-color: black;
         }
 
@@ -224,7 +224,8 @@
             left: 0;
             z-index: 2;
             width: 100%;
-            height: 80%; /* Adjust this for how much fading you want */
+            height: 80%;
+            /* Adjust this for how much fading you want */
             background: linear-gradient(to top, rgb(0, 0, 0, 1), rgba(0, 0, 0, 0));
         }
     </style>
@@ -246,47 +247,40 @@
     </footer>
 
     <script>
-        const API_KEY = '3657c7a4270a7b56d1408b202bdd7ce5'; // Your GNews API key
-        const URL = `https://gnews.io/api/v4/search?q=gaming&token=${API_KEY}`;
+  // Fetch data from the proxy API
+fetch("/api/proxy?q=gaming")
+    .then(response => response.json())
+    .then(data => {
+        displayNews(data.articles); // Pass articles to display function
+    })
+    .catch(error => console.error("Error:", error));
 
-        async function fetchNews() {
-            try {
-                const response = await fetch(URL);
-                const data = await response.json();
-                displayNews(data.articles); // Display news articles
-            } catch (error) {
-                console.error("Error fetching news:", error);
-            }
+function displayNews(articles) {
+    const newsContainer = document.getElementById("news");
+    newsContainer.innerHTML = ""; // Clear previous content
+
+    // If no articles are available, show an appropriate message
+    if (articles.length === 0) {
+        newsContainer.innerHTML = "<p style='color: red;'>No gaming news available at the moment.</p>";
+        return;
+    }
+
+    articles.forEach(article => {
+        // Ensure that each article has necessary information
+        if (article.image && article.title && article.description) {
+            const newsCard = `
+                <div class="news-card">
+                    <img src="${article.image}" alt="News Image">
+                    <h3>${article.title}</h3>
+                    <p>${article.description.substring(0, 100)}...</p>
+                    <a href="${article.url}" target="_blank">Read More</a>
+                </div>
+            `;
+            newsContainer.innerHTML += newsCard; // Append new card
         }
+    });
+}
 
-        function displayNews(articles) {
-            const newsContainer = document.getElementById("news");
-            newsContainer.innerHTML = ""; // Clear previous content
-
-            // Check if articles array is not empty
-            if (articles.length === 0) {
-                newsContainer.innerHTML = "<p style='color: red;'>No gaming news available at the moment.</p>";
-                return;
-            }
-
-            articles.forEach(article => {
-                // Ensure the article has a valid image and content
-                if (article.image && article.title && article.description) {
-                    const newsCard = `
-                        <div class="news-card">
-                            <img src="${article.image}" alt="News Image">
-                            <h3>${article.title}</h3>
-                            <p>${article.description.substring(0, 100)}...</p>
-                            <a href="${article.url}" target="_blank">Read More</a>
-                        </div>
-                    `;
-                    newsContainer.innerHTML += newsCard; // Append new content
-                }
-            });
-        }
-
-        // Fetch and display news on page load
-        window.onload = fetchNews;
     </script>
 
 </body>

@@ -1,78 +1,86 @@
-import cv2
-import numpy as np
+import sys
 import time
-import threading
-import easyocr
-from PIL import ImageGrab
-import tkinter as tk
+import requests
+import keyboard
+from PyQt5.QtWidgets import QApplication, QRubberBand, QMainWindow
+from PyQt5.QtCore import Qt, QRect, QPoint
+from PyQt5.QtGui import QPixmap, QGuiApplication
 
-# Initialize EasyOCR Reader (Supports English & Hindi, change if needed)
-reader = easyocr.Reader(["en"])
+class SnippingTool(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        self.setWindowOpacity(0.3)  # Semi-transparent overlay
+        screen = QGuiApplication.primaryScreen().geometry()
+        self.setGeometry(screen)  # Fullscreen overlay
 
-class OCRApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Movable OCR Frame")
+        self.origin = QPoint()
+        self.rubberBand = QRubberBand(QRubberBand.Rectangle, self)
+        self.selection_done = False  # Flag to check selection status
+        self.show()
 
-        # Define window size & position
-        self.width, self.height = 300, 150
-        self.x, self.y = 100, 100
+    def mousePressEvent(self, event):
+        self.origin = event.pos()
+        self.rubberBand.setGeometry(QRect(self.origin, self.origin))
+        self.rubberBand.show()
 
-        # Create a transparent overlay
-        self.canvas = tk.Canvas(root, width=self.width, height=self.height, bg="red", highlightthickness=2)
-        self.canvas.place(x=self.x, y=self.y)
+    def mouseMoveEvent(self, event):
+        if self.rubberBand.isVisible():
+            self.rubberBand.setGeometry(QRect(self.origin, event.pos()).normalized())
 
-        # Enable dragging
-        self.canvas.bind("<ButtonPress-1>", self.start_move)
-        self.canvas.bind("<B1-Motion>", self.do_move)
+    def mouseReleaseEvent(self, event):
+        self.captureScreenshot()
+        self.selection_done = True
+        self.close()
 
-        # Start OCR Thread
-        self.ocr_running = True
-        self.ocr_thread = threading.Thread(target=self.run_ocr)
-        self.ocr_thread.start()
+    def captureScreenshot(self):
+        rect = self.rubberBand.geometry()
+        if rect.width() > 10 and rect.height() > 10:  # Ensure valid selection
+            screenshot = QGuiApplication.primaryScreen().grabWindow(
+                0, rect.x(), rect.y(), rect.width(), rect.height()
+            )
+            screenshot.save("screenshot.png")
+        else:
+            print("Selection too small. Try again!")
 
-    def start_move(self, event):
-        """Records the starting position for movement."""
-        self.start_x = event.x
-        self.start_y = event.y
 
-    def do_move(self, event):
-        """Moves the canvas frame on screen."""
-        self.x += event.x - self.start_x
-        self.y += event.y - self.start_y
-        self.canvas.place(x=self.x, y=self.y)
+def get_text_from_image():
+    api_key = "K84179819588957"  # Replace with your OCR.space API key
+    image_path = "screenshot.png"
 
-    def run_ocr(self):
-        """Continuously extracts text from the selected screen area."""
-        while self.ocr_running:
-            time.sleep(1)  # OCR every second
-            image = self.capture_screen()
-            text = self.extract_text_easyocr(image)
-            if text:
-                print("\n📜 Extracted Text:\n", text)
+    with open(image_path, "rb") as image_file:
+        response = requests.post(
+            "https://api.ocr.space/parse/image",
+            files={"image": image_file},
+            data={"apikey": api_key, "language": "eng"},
+        )
 
-    def capture_screen(self):
-        """Captures the screen within the defined rectangle."""
-        x1, y1 = self.x, self.y
-        x2, y2 = x1 + self.width, y1 + self.height
-        image = ImageGrab.grab(bbox=(x1, y1, x2, y2))
-        return np.array(image)
+    text = response.json().get("ParsedResults", [{}])[0].get("ParsedText", "")
 
-    def extract_text_easyocr(self, image):
-        """Extracts text from the image using EasyOCR."""
-        results = reader.readtext(image)
-        return "\n".join([res[1] for res in results]) if results else "No text detected."
+    # Convert text into a single line (remove newlines and extra spaces)
+    single_line_text = " ".join(text.split())
 
-    def close_app(self):
-        """Stops OCR and closes the app."""
-        self.ocr_running = False
-        self.root.destroy()
+    print("Extracted Text:\n", single_line_text)
 
-# --- Run the Application ---
-root = tk.Tk()
-root.geometry("400x300+50+50")  # Starting position
-app = OCRApp(root)
+    # Start typing with delay
+    time.sleep(2)  # Wait for 1 second before typing
+    type_text_slowly(single_line_text)
 
-# Close on window exit
-root.protocol("WM_DELETE_WINDOW", app.close_app)
-root.mainloop()
+
+def type_text_slowly(text):
+    """Types extracted text with a realistic typing effect."""
+    for char in text:
+        keyboard.write(char, delay=0.01)  # Simulated typing speed (~75 WPM)
+        time.sleep(0.01)  # Adds a slight delay between characters
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    snipper = SnippingTool()
+    app.exec_()  # Wait for user selection
+
+    # Ensure screenshot is taken before processing
+    if snipper.selection_done:
+        get_text_from_image()
+    else:
+        print("No selection made. Exiting.")
