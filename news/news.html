@@ -248,18 +248,18 @@
 
     <script>    // Fetch data from the proxy API
 
-        const apiKey = process.env.newskey; // Your GNews API key
-        const URL = `https://gnews.io/api/v4/search?q=gaming&token=${apiKey}`;
-
         async function fetchNews() {
             try {
-                const response = await fetch(URL);
+                const response = await fetch("/api/news"); // Calls Vercel's API function
                 const data = await response.json();
-                displayNews(data.articles); // Display news articles
+                displayNews(data.articles);
             } catch (error) {
                 console.error("Error fetching news:", error);
             }
         }
+
+        fetchNews();
+
 
         function displayNews(articles) {
             const newsContainer = document.getElementById("news");
