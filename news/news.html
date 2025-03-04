@@ -246,29 +246,35 @@
         <p>&copy; 2025 Gaming News | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 
-    <script>
-  // Fetch data from the proxy API
-fetch("/api/proxy?q=gaming")
-    .then(response => response.json())
-    .then(data => {
-        displayNews(data.articles); // Pass articles to display function
-    })
-    .catch(error => console.error("Error:", error));
+    <script>    // Fetch data from the proxy API
 
-function displayNews(articles) {
-    const newsContainer = document.getElementById("news");
-    newsContainer.innerHTML = ""; // Clear previous content
+        const apiKey = process.env.newskey; // Your GNews API key
+        const URL = `https://gnews.io/api/v4/search?q=gaming&token=${apiKey}`;
 
-    // If no articles are available, show an appropriate message
-    if (articles.length === 0) {
-        newsContainer.innerHTML = "<p style='color: red;'>No gaming news available at the moment.</p>";
-        return;
-    }
+        async function fetchNews() {
+            try {
+                const response = await fetch(URL);
+                const data = await response.json();
+                displayNews(data.articles); // Display news articles
+            } catch (error) {
+                console.error("Error fetching news:", error);
+            }
+        }
 
-    articles.forEach(article => {
-        // Ensure that each article has necessary information
-        if (article.image && article.title && article.description) {
-            const newsCard = `
+        function displayNews(articles) {
+            const newsContainer = document.getElementById("news");
+            newsContainer.innerHTML = ""; // Clear previous content
+
+            // If no articles are available, show an appropriate message
+            if (articles.length === 0) {
+                newsContainer.innerHTML = "<p style='color: red;'>No gaming news available at the moment.</p>";
+                return;
+            }
+
+            articles.forEach(article => {
+                // Ensure that each article has necessary information
+                if (article.image && article.title && article.description) {
+                    const newsCard = `
                 <div class="news-card">
                     <img src="${article.image}" alt="News Image">
                     <h3>${article.title}</h3>
@@ -276,10 +282,10 @@ function displayNews(articles) {
                     <a href="${article.url}" target="_blank">Read More</a>
                 </div>
             `;
-            newsContainer.innerHTML += newsCard; // Append new card
+                    newsContainer.innerHTML += newsCard; // Append new card
+                }
+            });
         }
-    });
-}
 
     </script>
 
